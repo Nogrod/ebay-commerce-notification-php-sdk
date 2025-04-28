@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TopicApi
  * PHP version 8.1
@@ -138,8 +139,7 @@ class TopicApi
     public function getTopic(
         string $topic_id,
         string $contentType = self::contentTypes['getTopic'][0]
-    ): \eBay\Commerce\Notification\Model\Topic
-    {
+    ): \eBay\Commerce\Notification\Model\Topic {
         list($response) = $this->getTopicWithHttpInfo($topic_id, $contentType);
         return $response;
     }
@@ -157,8 +157,7 @@ class TopicApi
     public function getTopicWithHttpInfo(
         string $topic_id,
         string $contentType = self::contentTypes['getTopic'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getTopicRequest($topic_id, $contentType);
 
         try {
@@ -184,9 +183,9 @@ class TopicApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\Topic', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\Topic', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -228,7 +227,7 @@ class TopicApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\Topic';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -282,8 +281,7 @@ class TopicApi
     public function getTopicAsync(
         string $topic_id,
         string $contentType = self::contentTypes['getTopic'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getTopicAsyncWithHttpInfo($topic_id, $contentType)
             ->then(
                 function ($response) {
@@ -304,8 +302,7 @@ class TopicApi
     public function getTopicAsyncWithHttpInfo(
         string $topic_id,
         string $contentType = self::contentTypes['getTopic'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\Topic';
         $request = $this->getTopicRequest($topic_id, $contentType);
 
@@ -313,7 +310,7 @@ class TopicApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -357,8 +354,7 @@ class TopicApi
     public function getTopicRequest(
         string $topic_id,
         string $contentType = self::contentTypes['getTopic'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'topic_id' is set
         if ($topic_id === null || (is_array($topic_id) && count($topic_id) === 0)) {
@@ -463,8 +459,7 @@ class TopicApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getTopics'][0]
-    ): \eBay\Commerce\Notification\Model\TopicSearchResponse
-    {
+    ): \eBay\Commerce\Notification\Model\TopicSearchResponse {
         list($response) = $this->getTopicsWithHttpInfo($continuation_token, $limit, $contentType);
         return $response;
     }
@@ -484,8 +479,7 @@ class TopicApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getTopics'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getTopicsRequest($continuation_token, $limit, $contentType);
 
         try {
@@ -511,9 +505,9 @@ class TopicApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\TopicSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\TopicSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -555,7 +549,7 @@ class TopicApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\TopicSearchResponse';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -611,8 +605,7 @@ class TopicApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getTopics'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getTopicsAsyncWithHttpInfo($continuation_token, $limit, $contentType)
             ->then(
                 function ($response) {
@@ -635,8 +628,7 @@ class TopicApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getTopics'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\TopicSearchResponse';
         $request = $this->getTopicsRequest($continuation_token, $limit, $contentType);
 
@@ -644,7 +636,7 @@ class TopicApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -690,8 +682,7 @@ class TopicApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getTopics'][0]
-    ): Request
-    {
+    ): Request {
 
 
 

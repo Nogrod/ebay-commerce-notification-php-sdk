@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PublicKeyApi
  * PHP version 8.1
@@ -135,8 +136,7 @@ class PublicKeyApi
     public function getPublicKey(
         string $public_key_id,
         string $contentType = self::contentTypes['getPublicKey'][0]
-    ): \eBay\Commerce\Notification\Model\PublicKey
-    {
+    ): \eBay\Commerce\Notification\Model\PublicKey {
         list($response) = $this->getPublicKeyWithHttpInfo($public_key_id, $contentType);
         return $response;
     }
@@ -154,8 +154,7 @@ class PublicKeyApi
     public function getPublicKeyWithHttpInfo(
         string $public_key_id,
         string $contentType = self::contentTypes['getPublicKey'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getPublicKeyRequest($public_key_id, $contentType);
 
         try {
@@ -181,9 +180,9 @@ class PublicKeyApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\PublicKey', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\PublicKey', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -225,7 +224,7 @@ class PublicKeyApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\PublicKey';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -279,8 +278,7 @@ class PublicKeyApi
     public function getPublicKeyAsync(
         string $public_key_id,
         string $contentType = self::contentTypes['getPublicKey'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getPublicKeyAsyncWithHttpInfo($public_key_id, $contentType)
             ->then(
                 function ($response) {
@@ -301,8 +299,7 @@ class PublicKeyApi
     public function getPublicKeyAsyncWithHttpInfo(
         string $public_key_id,
         string $contentType = self::contentTypes['getPublicKey'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\PublicKey';
         $request = $this->getPublicKeyRequest($public_key_id, $contentType);
 
@@ -310,7 +307,7 @@ class PublicKeyApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -354,8 +351,7 @@ class PublicKeyApi
     public function getPublicKeyRequest(
         string $public_key_id,
         string $contentType = self::contentTypes['getPublicKey'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'public_key_id' is set
         if ($public_key_id === null || (is_array($public_key_id) && count($public_key_id) === 0)) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DestinationApi
  * PHP version 8.1
@@ -149,8 +150,7 @@ class DestinationApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['createDestination'][0]
-    ): array
-    {
+    ): array {
         list($response) = $this->createDestinationWithHttpInfo($content_type, $destination_request, $contentType);
         return $response;
     }
@@ -170,8 +170,7 @@ class DestinationApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['createDestination'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createDestinationRequest($content_type, $destination_request, $contentType);
 
         try {
@@ -197,9 +196,9 @@ class DestinationApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
-                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -241,7 +240,7 @@ class DestinationApi
             }
 
             $returnType = 'object';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -297,8 +296,7 @@ class DestinationApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['createDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createDestinationAsyncWithHttpInfo($content_type, $destination_request, $contentType)
             ->then(
                 function ($response) {
@@ -321,8 +319,7 @@ class DestinationApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['createDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = 'object';
         $request = $this->createDestinationRequest($content_type, $destination_request, $contentType);
 
@@ -330,7 +327,7 @@ class DestinationApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -376,8 +373,7 @@ class DestinationApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['createDestination'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
@@ -484,8 +480,7 @@ class DestinationApi
     public function deleteDestination(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): void
-    {
+    ): void {
         $this->deleteDestinationWithHttpInfo($destination_id, $contentType);
     }
 
@@ -502,8 +497,7 @@ class DestinationApi
     public function deleteDestinationWithHttpInfo(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): array
-    {
+    ): array {
         $request = $this->deleteDestinationRequest($destination_id, $contentType);
 
         try {
@@ -550,8 +544,7 @@ class DestinationApi
     public function deleteDestinationAsync(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->deleteDestinationAsyncWithHttpInfo($destination_id, $contentType)
             ->then(
                 function ($response) {
@@ -572,8 +565,7 @@ class DestinationApi
     public function deleteDestinationAsyncWithHttpInfo(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteDestinationRequest($destination_id, $contentType);
 
@@ -612,8 +604,7 @@ class DestinationApi
     public function deleteDestinationRequest(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -716,8 +707,7 @@ class DestinationApi
     public function getDestination(
         string $destination_id,
         string $contentType = self::contentTypes['getDestination'][0]
-    ): \eBay\Commerce\Notification\Model\Destination
-    {
+    ): \eBay\Commerce\Notification\Model\Destination {
         list($response) = $this->getDestinationWithHttpInfo($destination_id, $contentType);
         return $response;
     }
@@ -735,8 +725,7 @@ class DestinationApi
     public function getDestinationWithHttpInfo(
         string $destination_id,
         string $contentType = self::contentTypes['getDestination'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getDestinationRequest($destination_id, $contentType);
 
         try {
@@ -762,9 +751,9 @@ class DestinationApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\Destination', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\Destination', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -806,7 +795,7 @@ class DestinationApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\Destination';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -860,8 +849,7 @@ class DestinationApi
     public function getDestinationAsync(
         string $destination_id,
         string $contentType = self::contentTypes['getDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getDestinationAsyncWithHttpInfo($destination_id, $contentType)
             ->then(
                 function ($response) {
@@ -882,8 +870,7 @@ class DestinationApi
     public function getDestinationAsyncWithHttpInfo(
         string $destination_id,
         string $contentType = self::contentTypes['getDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\Destination';
         $request = $this->getDestinationRequest($destination_id, $contentType);
 
@@ -891,7 +878,7 @@ class DestinationApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -935,8 +922,7 @@ class DestinationApi
     public function getDestinationRequest(
         string $destination_id,
         string $contentType = self::contentTypes['getDestination'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'destination_id' is set
         if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
@@ -1041,8 +1027,7 @@ class DestinationApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getDestinations'][0]
-    ): \eBay\Commerce\Notification\Model\DestinationSearchResponse
-    {
+    ): \eBay\Commerce\Notification\Model\DestinationSearchResponse {
         list($response) = $this->getDestinationsWithHttpInfo($continuation_token, $limit, $contentType);
         return $response;
     }
@@ -1062,8 +1047,7 @@ class DestinationApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getDestinations'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getDestinationsRequest($continuation_token, $limit, $contentType);
 
         try {
@@ -1089,9 +1073,9 @@ class DestinationApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\DestinationSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\DestinationSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1133,7 +1117,7 @@ class DestinationApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\DestinationSearchResponse';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1189,8 +1173,7 @@ class DestinationApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getDestinations'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getDestinationsAsyncWithHttpInfo($continuation_token, $limit, $contentType)
             ->then(
                 function ($response) {
@@ -1213,8 +1196,7 @@ class DestinationApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getDestinations'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\DestinationSearchResponse';
         $request = $this->getDestinationsRequest($continuation_token, $limit, $contentType);
 
@@ -1222,7 +1204,7 @@ class DestinationApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1268,8 +1250,7 @@ class DestinationApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getDestinations'][0]
-    ): Request
-    {
+    ): Request {
 
 
 
@@ -1381,8 +1362,7 @@ class DestinationApi
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): void
-    {
+    ): void {
         $this->updateDestinationWithHttpInfo($content_type, $destination_id, $destination_request, $contentType);
     }
 
@@ -1403,8 +1383,7 @@ class DestinationApi
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): array
-    {
+    ): array {
         $request = $this->updateDestinationRequest($content_type, $destination_id, $destination_request, $contentType);
 
         try {
@@ -1455,8 +1434,7 @@ class DestinationApi
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->updateDestinationAsyncWithHttpInfo($content_type, $destination_id, $destination_request, $contentType)
             ->then(
                 function ($response) {
@@ -1481,8 +1459,7 @@ class DestinationApi
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateDestinationRequest($content_type, $destination_id, $destination_request, $contentType);
 
@@ -1525,8 +1502,7 @@ class DestinationApi
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {

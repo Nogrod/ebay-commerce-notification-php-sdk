@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SubscriptionApi
  * PHP version 8.1
@@ -167,8 +168,7 @@ class SubscriptionApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionRequest $create_subscription_request = null,
         string $contentType = self::contentTypes['createSubscription'][0]
-    ): array
-    {
+    ): array {
         list($response) = $this->createSubscriptionWithHttpInfo($content_type, $create_subscription_request, $contentType);
         return $response;
     }
@@ -188,8 +188,7 @@ class SubscriptionApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionRequest $create_subscription_request = null,
         string $contentType = self::contentTypes['createSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createSubscriptionRequest($content_type, $create_subscription_request, $contentType);
 
         try {
@@ -215,9 +214,9 @@ class SubscriptionApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
-                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -259,7 +258,7 @@ class SubscriptionApi
             }
 
             $returnType = 'object';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -315,8 +314,7 @@ class SubscriptionApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionRequest $create_subscription_request = null,
         string $contentType = self::contentTypes['createSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createSubscriptionAsyncWithHttpInfo($content_type, $create_subscription_request, $contentType)
             ->then(
                 function ($response) {
@@ -339,8 +337,7 @@ class SubscriptionApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionRequest $create_subscription_request = null,
         string $contentType = self::contentTypes['createSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = 'object';
         $request = $this->createSubscriptionRequest($content_type, $create_subscription_request, $contentType);
 
@@ -348,7 +345,7 @@ class SubscriptionApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -394,8 +391,7 @@ class SubscriptionApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionRequest $create_subscription_request = null,
         string $contentType = self::contentTypes['createSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
@@ -506,8 +502,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest $create_subscription_filter_request = null,
         string $contentType = self::contentTypes['createSubscriptionFilter'][0]
-    ): array
-    {
+    ): array {
         list($response) = $this->createSubscriptionFilterWithHttpInfo($content_type, $subscription_id, $create_subscription_filter_request, $contentType);
         return $response;
     }
@@ -529,8 +524,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest $create_subscription_filter_request = null,
         string $contentType = self::contentTypes['createSubscriptionFilter'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createSubscriptionFilterRequest($content_type, $subscription_id, $create_subscription_filter_request, $contentType);
 
         try {
@@ -556,9 +550,9 @@ class SubscriptionApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
-                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -600,7 +594,7 @@ class SubscriptionApi
             }
 
             $returnType = 'object';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -658,8 +652,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest $create_subscription_filter_request = null,
         string $contentType = self::contentTypes['createSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createSubscriptionFilterAsyncWithHttpInfo($content_type, $subscription_id, $create_subscription_filter_request, $contentType)
             ->then(
                 function ($response) {
@@ -684,8 +677,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest $create_subscription_filter_request = null,
         string $contentType = self::contentTypes['createSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = 'object';
         $request = $this->createSubscriptionFilterRequest($content_type, $subscription_id, $create_subscription_filter_request, $contentType);
 
@@ -693,7 +685,7 @@ class SubscriptionApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -741,8 +733,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest $create_subscription_filter_request = null,
         string $contentType = self::contentTypes['createSubscriptionFilter'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
@@ -864,8 +855,7 @@ class SubscriptionApi
     public function deleteSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): void
-    {
+    ): void {
         $this->deleteSubscriptionWithHttpInfo($subscription_id, $contentType);
     }
 
@@ -882,8 +872,7 @@ class SubscriptionApi
     public function deleteSubscriptionWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->deleteSubscriptionRequest($subscription_id, $contentType);
 
         try {
@@ -930,8 +919,7 @@ class SubscriptionApi
     public function deleteSubscriptionAsync(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->deleteSubscriptionAsyncWithHttpInfo($subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -952,8 +940,7 @@ class SubscriptionApi
     public function deleteSubscriptionAsyncWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteSubscriptionRequest($subscription_id, $contentType);
 
@@ -992,8 +979,7 @@ class SubscriptionApi
     public function deleteSubscriptionRequest(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1098,8 +1084,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): void
-    {
+    ): void {
         $this->deleteSubscriptionFilterWithHttpInfo($filter_id, $subscription_id, $contentType);
     }
 
@@ -1118,8 +1103,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): array
-    {
+    ): array {
         $request = $this->deleteSubscriptionFilterRequest($filter_id, $subscription_id, $contentType);
 
         try {
@@ -1168,8 +1152,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->deleteSubscriptionFilterAsyncWithHttpInfo($filter_id, $subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -1192,8 +1175,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteSubscriptionFilterRequest($filter_id, $subscription_id, $contentType);
 
@@ -1234,8 +1216,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'filter_id' is set
         if ($filter_id === null || (is_array($filter_id) && count($filter_id) === 0)) {
@@ -1353,8 +1334,7 @@ class SubscriptionApi
     public function disableSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): void
-    {
+    ): void {
         $this->disableSubscriptionWithHttpInfo($subscription_id, $contentType);
     }
 
@@ -1371,8 +1351,7 @@ class SubscriptionApi
     public function disableSubscriptionWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->disableSubscriptionRequest($subscription_id, $contentType);
 
         try {
@@ -1419,8 +1398,7 @@ class SubscriptionApi
     public function disableSubscriptionAsync(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->disableSubscriptionAsyncWithHttpInfo($subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -1441,8 +1419,7 @@ class SubscriptionApi
     public function disableSubscriptionAsyncWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->disableSubscriptionRequest($subscription_id, $contentType);
 
@@ -1481,8 +1458,7 @@ class SubscriptionApi
     public function disableSubscriptionRequest(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1585,8 +1561,7 @@ class SubscriptionApi
     public function enableSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): void
-    {
+    ): void {
         $this->enableSubscriptionWithHttpInfo($subscription_id, $contentType);
     }
 
@@ -1603,8 +1578,7 @@ class SubscriptionApi
     public function enableSubscriptionWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->enableSubscriptionRequest($subscription_id, $contentType);
 
         try {
@@ -1651,8 +1625,7 @@ class SubscriptionApi
     public function enableSubscriptionAsync(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->enableSubscriptionAsyncWithHttpInfo($subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -1673,8 +1646,7 @@ class SubscriptionApi
     public function enableSubscriptionAsyncWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->enableSubscriptionRequest($subscription_id, $contentType);
 
@@ -1713,8 +1685,7 @@ class SubscriptionApi
     public function enableSubscriptionRequest(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -1817,8 +1788,7 @@ class SubscriptionApi
     public function getSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Subscription
-    {
+    ): \eBay\Commerce\Notification\Model\Subscription {
         list($response) = $this->getSubscriptionWithHttpInfo($subscription_id, $contentType);
         return $response;
     }
@@ -1836,8 +1806,7 @@ class SubscriptionApi
     public function getSubscriptionWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getSubscriptionRequest($subscription_id, $contentType);
 
         try {
@@ -1863,9 +1832,9 @@ class SubscriptionApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\Subscription', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\Subscription', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1907,7 +1876,7 @@ class SubscriptionApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\Subscription';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1961,8 +1930,7 @@ class SubscriptionApi
     public function getSubscriptionAsync(
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getSubscriptionAsyncWithHttpInfo($subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -1983,8 +1951,7 @@ class SubscriptionApi
     public function getSubscriptionAsyncWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\Subscription';
         $request = $this->getSubscriptionRequest($subscription_id, $contentType);
 
@@ -1992,7 +1959,7 @@ class SubscriptionApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2036,8 +2003,7 @@ class SubscriptionApi
     public function getSubscriptionRequest(
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -2142,8 +2108,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscriptionFilter'][0]
-    ): \eBay\Commerce\Notification\Model\SubscriptionFilter
-    {
+    ): \eBay\Commerce\Notification\Model\SubscriptionFilter {
         list($response) = $this->getSubscriptionFilterWithHttpInfo($filter_id, $subscription_id, $contentType);
         return $response;
     }
@@ -2163,8 +2128,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscriptionFilter'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getSubscriptionFilterRequest($filter_id, $subscription_id, $contentType);
 
         try {
@@ -2190,9 +2154,9 @@ class SubscriptionApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\SubscriptionFilter', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\SubscriptionFilter', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2234,7 +2198,7 @@ class SubscriptionApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\SubscriptionFilter';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -2290,8 +2254,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getSubscriptionFilterAsyncWithHttpInfo($filter_id, $subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -2314,8 +2277,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscriptionFilter'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\SubscriptionFilter';
         $request = $this->getSubscriptionFilterRequest($filter_id, $subscription_id, $contentType);
 
@@ -2323,7 +2285,7 @@ class SubscriptionApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2369,8 +2331,7 @@ class SubscriptionApi
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['getSubscriptionFilter'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'filter_id' is set
         if ($filter_id === null || (is_array($filter_id) && count($filter_id) === 0)) {
@@ -2490,8 +2451,7 @@ class SubscriptionApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getSubscriptions'][0]
-    ): \eBay\Commerce\Notification\Model\SubscriptionSearchResponse
-    {
+    ): \eBay\Commerce\Notification\Model\SubscriptionSearchResponse {
         list($response) = $this->getSubscriptionsWithHttpInfo($continuation_token, $limit, $contentType);
         return $response;
     }
@@ -2511,8 +2471,7 @@ class SubscriptionApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getSubscriptions'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getSubscriptionsRequest($continuation_token, $limit, $contentType);
 
         try {
@@ -2538,9 +2497,9 @@ class SubscriptionApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\SubscriptionSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\SubscriptionSearchResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2582,7 +2541,7 @@ class SubscriptionApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\SubscriptionSearchResponse';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -2638,8 +2597,7 @@ class SubscriptionApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getSubscriptions'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getSubscriptionsAsyncWithHttpInfo($continuation_token, $limit, $contentType)
             ->then(
                 function ($response) {
@@ -2662,8 +2620,7 @@ class SubscriptionApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getSubscriptions'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\SubscriptionSearchResponse';
         $request = $this->getSubscriptionsRequest($continuation_token, $limit, $contentType);
 
@@ -2671,7 +2628,7 @@ class SubscriptionApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2717,8 +2674,7 @@ class SubscriptionApi
         ?string $continuation_token = null,
         ?string $limit = null,
         string $contentType = self::contentTypes['getSubscriptions'][0]
-    ): Request
-    {
+    ): Request {
 
 
 
@@ -2826,8 +2782,7 @@ class SubscriptionApi
     public function testSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): void
-    {
+    ): void {
         $this->testSubscriptionWithHttpInfo($subscription_id, $contentType);
     }
 
@@ -2844,8 +2799,7 @@ class SubscriptionApi
     public function testSubscriptionWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->testSubscriptionRequest($subscription_id, $contentType);
 
         try {
@@ -2892,8 +2846,7 @@ class SubscriptionApi
     public function testSubscriptionAsync(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->testSubscriptionAsyncWithHttpInfo($subscription_id, $contentType)
             ->then(
                 function ($response) {
@@ -2914,8 +2867,7 @@ class SubscriptionApi
     public function testSubscriptionAsyncWithHttpInfo(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->testSubscriptionRequest($subscription_id, $contentType);
 
@@ -2954,8 +2906,7 @@ class SubscriptionApi
     public function testSubscriptionRequest(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'subscription_id' is set
         if ($subscription_id === null || (is_array($subscription_id) && count($subscription_id) === 0)) {
@@ -3062,8 +3013,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): void
-    {
+    ): void {
         $this->updateSubscriptionWithHttpInfo($content_type, $subscription_id, $update_subscription_request, $contentType);
     }
 
@@ -3084,8 +3034,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): array
-    {
+    ): array {
         $request = $this->updateSubscriptionRequest($content_type, $subscription_id, $update_subscription_request, $contentType);
 
         try {
@@ -3136,8 +3085,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->updateSubscriptionAsyncWithHttpInfo($content_type, $subscription_id, $update_subscription_request, $contentType)
             ->then(
                 function ($response) {
@@ -3162,8 +3110,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateSubscriptionRequest($content_type, $subscription_id, $update_subscription_request, $contentType);
 
@@ -3206,8 +3153,7 @@ class SubscriptionApi
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {

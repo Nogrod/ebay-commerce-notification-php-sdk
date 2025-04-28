@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UpdateSubscriptionRequest
  *
@@ -446,7 +447,7 @@ class UpdateSubscriptionRequest implements ModelInterface, ArrayAccess, JsonSeri
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

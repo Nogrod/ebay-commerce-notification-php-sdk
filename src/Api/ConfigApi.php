@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConfigApi
  * PHP version 8.1
@@ -136,8 +137,7 @@ class ConfigApi
      */
     public function getConfig(
         string $contentType = self::contentTypes['getConfig'][0]
-    ): \eBay\Commerce\Notification\Model\Config
-    {
+    ): \eBay\Commerce\Notification\Model\Config {
         list($response) = $this->getConfigWithHttpInfo($contentType);
         return $response;
     }
@@ -153,8 +153,7 @@ class ConfigApi
      */
     public function getConfigWithHttpInfo(
         string $contentType = self::contentTypes['getConfig'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getConfigRequest($contentType);
 
         try {
@@ -180,9 +179,9 @@ class ConfigApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Commerce\Notification\Model\Config', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Commerce\Notification\Model\Config', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -224,7 +223,7 @@ class ConfigApi
             }
 
             $returnType = '\eBay\Commerce\Notification\Model\Config';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -276,8 +275,7 @@ class ConfigApi
      */
     public function getConfigAsync(
         string $contentType = self::contentTypes['getConfig'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getConfigAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
@@ -296,8 +294,7 @@ class ConfigApi
      */
     public function getConfigAsyncWithHttpInfo(
         string $contentType = self::contentTypes['getConfig'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Commerce\Notification\Model\Config';
         $request = $this->getConfigRequest($contentType);
 
@@ -305,7 +302,7 @@ class ConfigApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -347,8 +344,7 @@ class ConfigApi
      */
     public function getConfigRequest(
         string $contentType = self::contentTypes['getConfig'][0]
-    ): Request
-    {
+    ): Request {
 
 
         $resourcePath = '/config';
@@ -438,8 +434,7 @@ class ConfigApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\Config $config = null,
         string $contentType = self::contentTypes['updateConfig'][0]
-    ): void
-    {
+    ): void {
         $this->updateConfigWithHttpInfo($content_type, $config, $contentType);
     }
 
@@ -458,8 +453,7 @@ class ConfigApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\Config $config = null,
         string $contentType = self::contentTypes['updateConfig'][0]
-    ): array
-    {
+    ): array {
         $request = $this->updateConfigRequest($content_type, $config, $contentType);
 
         try {
@@ -508,8 +502,7 @@ class ConfigApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\Config $config = null,
         string $contentType = self::contentTypes['updateConfig'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->updateConfigAsyncWithHttpInfo($content_type, $config, $contentType)
             ->then(
                 function ($response) {
@@ -532,8 +525,7 @@ class ConfigApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\Config $config = null,
         string $contentType = self::contentTypes['updateConfig'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateConfigRequest($content_type, $config, $contentType);
 
@@ -574,8 +566,7 @@ class ConfigApi
         string $content_type,
         ?\eBay\Commerce\Notification\Model\Config $config = null,
         string $contentType = self::contentTypes['updateConfig'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'content_type' is set
         if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
