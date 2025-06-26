@@ -35,6 +35,7 @@ src/Api/SubscriptionApi.php
 src/Api/TopicApi.php
 src/ApiException.php
 src/Configuration.php
+src/FormDataProcessor.php
 src/HeaderSelector.php
 src/Model/Config.php
 src/Model/CreateSubscriptionFilterRequest.php
