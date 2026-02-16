@@ -13,7 +13,7 @@ info:
   license:
     name: "eBay API License Agreement"
     url: "https://developer.ebay.com/join/api-license-agreement"
-  version: "v1.6.2"
+  version: "v1.6.7"
 servers:
 - url: "https://api.ebay.com{basePath}"
   description: "Production"
