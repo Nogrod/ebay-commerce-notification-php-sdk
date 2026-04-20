@@ -1,4 +1,4 @@
-# # SubscriptionFilter
+# SubscriptionFilter
 
 ## Properties
 

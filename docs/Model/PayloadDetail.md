@@ -1,4 +1,4 @@
-# # PayloadDetail
+# PayloadDetail
 
 ## Properties
 

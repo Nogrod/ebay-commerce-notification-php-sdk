@@ -1,4 +1,4 @@
-# # DeliveryConfig
+# DeliveryConfig
 
 ## Properties
 

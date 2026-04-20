@@ -1,4 +1,4 @@
-# # TopicSearchResponse
+# TopicSearchResponse
 
 ## Properties
 

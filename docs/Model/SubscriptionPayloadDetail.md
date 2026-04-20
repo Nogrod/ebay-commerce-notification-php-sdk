@@ -1,4 +1,4 @@
-# # SubscriptionPayloadDetail
+# SubscriptionPayloadDetail
 
 ## Properties
 

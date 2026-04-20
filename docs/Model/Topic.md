@@ -1,4 +1,4 @@
-# # Topic
+# Topic
 
 ## Properties
 

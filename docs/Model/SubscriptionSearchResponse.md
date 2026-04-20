@@ -1,4 +1,4 @@
-# # SubscriptionSearchResponse
+# SubscriptionSearchResponse
 
 ## Properties
 

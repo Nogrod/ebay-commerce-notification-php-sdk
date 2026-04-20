@@ -1,4 +1,4 @@
-# # ErrorParameter
+# ErrorParameter
 
 ## Properties
 

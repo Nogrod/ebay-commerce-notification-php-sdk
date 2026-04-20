@@ -1,4 +1,4 @@
-# # DestinationSearchResponse
+# DestinationSearchResponse
 
 ## Properties
 

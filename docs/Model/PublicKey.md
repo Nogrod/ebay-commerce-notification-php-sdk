@@ -1,4 +1,4 @@
-# # PublicKey
+# PublicKey
 
 ## Properties
 
