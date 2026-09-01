@@ -14,12 +14,12 @@ All URIs are relative to https://api.ebay.com/commerce/notification/v1, except i
 ## `createDestination()`
 
 ```php
-createDestination($content_type, $destination_request): object
+createDestination($destination_request): object
 ```
 
 
 
-This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <strong>updateDestination</strong> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully. Refer to the <a href=\"/api-docs/commerce/notification/overview.html\">Notification API overview</a> for more information.</span>
+This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-updatedestination\">updateDestination</a> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully.
 
 ### Example
 
@@ -41,11 +41,10 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $destination_request = new \eBay\Commerce\Notification\Model\DestinationRequest(); // \eBay\Commerce\Notification\Model\DestinationRequest | The create destination request.
 
 try {
-    $result = $apiInstance->createDestination($content_type, $destination_request);
+    $result = $apiInstance->createDestination($destination_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->createDestination: ', $e->getMessage(), PHP_EOL;
@@ -56,7 +55,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **destination_request** | [**\eBay\Commerce\Notification\Model\DestinationRequest**](../Model/DestinationRequest.md)| The create destination request. | [optional] |
 
 ### Return type
@@ -79,7 +77,7 @@ try {
 ## `deleteDestination()`
 
 ```php
-deleteDestination($destination_id)
+deleteDestination($destination_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
@@ -106,10 +104,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$destination_id = 'destination_id_example'; // string | The unique identifier of the destination to delete. Only disabled or marked down destinations can be deleted, and enabled destinations cannot be deleted. Use <b>getDestination</b> or <b>getDestinations</b> to see the current status of a destination.
+$destination_id = 'destination_id_example'; // string | The unique identifier of the destination to delete. Only disabled or marked down destinations can be deleted, and enabled destinations cannot be deleted. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-getdestination\">getDestination</a> or <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-getdestinations\">getDestinations</a> to see the current status of a destination.
 
 try {
-    $apiInstance->deleteDestination($destination_id);
+    $result = $apiInstance->deleteDestination($destination_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->deleteDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -119,11 +118,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **destination_id** | **string**| The unique identifier of the destination to delete. Only disabled or marked down destinations can be deleted, and enabled destinations cannot be deleted. Use &lt;b&gt;getDestination&lt;/b&gt; or &lt;b&gt;getDestinations&lt;/b&gt; to see the current status of a destination. | |
+| **destination_id** | **string**| The unique identifier of the destination to delete. Only disabled or marked down destinations can be deleted, and enabled destinations cannot be deleted. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-destination-getdestination\&quot;&gt;getDestination&lt;/a&gt; or &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-destination-getdestinations\&quot;&gt;getDestinations&lt;/a&gt; to see the current status of a destination. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -132,7 +131,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -168,7 +167,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$destination_id = 'destination_id_example'; // string | The unique identifier of the destination to retrieve. Use <b>getDestinations</b> to retrieve destination IDs.
+$destination_id = 'destination_id_example'; // string | The unique identifier of the destination to retrieve. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-getdestinations\">getDestinations</a> to retrieve destination IDs.
 
 try {
     $result = $apiInstance->getDestination($destination_id);
@@ -182,7 +181,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **destination_id** | **string**| The unique identifier of the destination to retrieve. Use &lt;b&gt;getDestinations&lt;/b&gt; to retrieve destination IDs. | |
+| **destination_id** | **string**| The unique identifier of the destination to retrieve. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-destination-getdestinations\&quot;&gt;getDestinations&lt;/a&gt; to retrieve destination IDs. | |
 
 ### Return type
 
@@ -269,12 +268,12 @@ try {
 ## `updateDestination()`
 
 ```php
-updateDestination($content_type, $destination_id, $destination_request)
+updateDestination($destination_id, $destination_request): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method allows applications to update a destination.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully. Refer to the <a href=\"/api-docs/commerce/notification/overview.html\">Notification API overview</a> for more information.</span>
+This method allows applications to update a destination.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully.</span>
 
 ### Example
 
@@ -296,12 +295,12 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $destination_id = 'destination_id_example'; // string | The unique identifier for the destination.
 $destination_request = new \eBay\Commerce\Notification\Model\DestinationRequest(); // \eBay\Commerce\Notification\Model\DestinationRequest | The create subscription request.
 
 try {
-    $apiInstance->updateDestination($content_type, $destination_id, $destination_request);
+    $result = $apiInstance->updateDestination($destination_id, $destination_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->updateDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -311,13 +310,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **destination_id** | **string**| The unique identifier for the destination. | |
 | **destination_request** | [**\eBay\Commerce\Notification\Model\DestinationRequest**](../Model/DestinationRequest.md)| The create subscription request. | [optional] |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -326,7 +324,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

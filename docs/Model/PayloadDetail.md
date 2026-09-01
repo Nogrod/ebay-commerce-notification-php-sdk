@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**delivery_protocol** | **string** | The supported delivery protocols. For implementation help, refer to &lt;a href&#x3D;&#39;https://developer.ebay.com/api-docs/commerce/notification/types/api:ProtocolEnum&#39;&gt;eBay API documentation&lt;/a&gt; | [optional]
+**delivery_protocol** | [**\eBay\Commerce\Notification\Model\ProtocolEnum**](ProtocolEnum.md) | The supported delivery protocols. | [optional]
 **deprecated** | **bool** | A deprecation indicator. | [optional]
-**format** | **string[]** | The supported format. Presently, &lt;code&gt;JSON&lt;/code&gt; is the only supported format. | [optional]
+**format** | [**\eBay\Commerce\Notification\Model\FormatTypeEnum[]**](FormatTypeEnum.md) | The supported format. Presently, &lt;code&gt;JSON&lt;/code&gt; is the only supported format. | [optional]
 **schema_version** | **string** | The supported schema version. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

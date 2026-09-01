@@ -4,14 +4,14 @@ All URIs are relative to https://api.ebay.com/commerce/notification/v1, except i
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getConfig()**](ConfigApi.md#getConfig) | **GET** /config |  |
+| [**getNotificationConfig()**](ConfigApi.md#getNotificationConfig) | **GET** /config |  |
 | [**updateConfig()**](ConfigApi.md#updateConfig) | **PUT** /config |  |
 
 
-## `getConfig()`
+## `getNotificationConfig()`
 
 ```php
-getConfig(): \eBay\Commerce\Notification\Model\Config
+getNotificationConfig(): \eBay\Commerce\Notification\Model\Config
 ```
 
 
@@ -40,10 +40,10 @@ $apiInstance = new eBay\Commerce\Notification\Api\ConfigApi(
 );
 
 try {
-    $result = $apiInstance->getConfig();
+    $result = $apiInstance->getNotificationConfig();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ConfigApi->getConfig: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ConfigApi->getNotificationConfig: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -71,7 +71,7 @@ This endpoint does not need any parameter.
 ## `updateConfig()`
 
 ```php
-updateConfig($content_type, $config)
+updateConfig($config): \eBay\Commerce\Notification\Model\Error
 ```
 
 
@@ -98,11 +98,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\ConfigApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $config = new \eBay\Commerce\Notification\Model\Config(); // \eBay\Commerce\Notification\Model\Config | The configurations for this application.
 
 try {
-    $apiInstance->updateConfig($content_type, $config);
+    $result = $apiInstance->updateConfig($config);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConfigApi->updateConfig: ', $e->getMessage(), PHP_EOL;
 }
@@ -112,12 +112,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **config** | [**\eBay\Commerce\Notification\Model\Config**](../Model/Config.md)| The configurations for this application. | [optional] |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -126,7 +125,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

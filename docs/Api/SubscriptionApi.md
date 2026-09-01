@@ -20,12 +20,12 @@ All URIs are relative to https://api.ebay.com/commerce/notification/v1, except i
 ## `createSubscription()`
 
 ```php
-createSubscription($content_type, $create_subscription_request): object
+createSubscription($create_subscription_request): object
 ```
 
 
 
-This method allows applications to create a subscription for a topic and supported schema version. Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.<br><br>Each application and topic-schema pairing to a subscription should have a 1:1 cardinality.<br><br>You can create the subscription in disabled mode, test it (see the <b>test</b> method), and when everything is ready, you can enable the subscription (see the <b>enableSubscription</b> method).<br><br><span class=\"tablenote\"><b>Note:</b> If an application is not authorized to subscribe to a topic, for example, if your authorization does not include the list of scopes required for the topic, an error code of 195011 is returned.</span>
+This method allows applications to create a subscription for a topic and supported schema version. Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.<br><br>Each application and topic-schema pairing to a subscription should have a 1:1 cardinality.<br><br>You can create the subscription in disabled mode, test it (see the <b>test</b> method), and when everything is ready, you can enable the subscription (see the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-enablesubscription\">enableSubscription</a> method).<br><br><span class=\"tablenote\"><b>Note:</b> If an application is not authorized to subscribe to a topic, for example, if your authorization does not include the list of scopes required for the topic, an error code of 195011 is returned.</span>
 
 ### Example
 
@@ -47,11 +47,10 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_subscription_request = new \eBay\Commerce\Notification\Model\CreateSubscriptionRequest(); // \eBay\Commerce\Notification\Model\CreateSubscriptionRequest | The create subscription request.
 
 try {
-    $result = $apiInstance->createSubscription($content_type, $create_subscription_request);
+    $result = $apiInstance->createSubscription($create_subscription_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -62,7 +61,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_subscription_request** | [**\eBay\Commerce\Notification\Model\CreateSubscriptionRequest**](../Model/CreateSubscriptionRequest.md)| The create subscription request. | [optional] |
 
 ### Return type
@@ -85,12 +83,12 @@ try {
 ## `createSubscriptionFilter()`
 
 ```php
-createSubscriptionFilter($content_type, $subscription_id, $create_subscription_filter_request): object
+createSubscriptionFilter($subscription_id, $create_subscription_filter_request): object
 ```
 
 
 
-This method allows applications to create a filter for a subscription. Filters allow applications to only be sent notifications that match a provided criteria. Notifications that do not match this criteria will not be sent to the destination.<br><br>The <strong>filterSchema</strong> value must be a valid <a href=\"https://json-schema.org \" target=\"_blank\">JSON Schema Core document</a> (version 2020-12 or later). The <strong>filterSchema</strong> provided must describe the subscription's notification payload such that it supplies valid criteria to filter the subscription's notifications. The user does not need to provide <code>$schema</code> and <code>$id</code> definitions.<br><br>When a filter is first created, it is not immediately active on the subscription. If the request has a valid JSON body, the successful call returns the HTTP status code <b>201&nbsp;Created</b>. Newly created filters are in <code>PENDING</code> status until they are reviewed. If a filter is valid, it will move from <code>PENDING</code> status to <code>ENABLED</code> status. You can find the status of a filter using the <a href=\"/api-docs/commerce/notification/resources/subscription/methods/getSubscriptionFilter\">getSubscriptionFilter</a> method. See <a href=\"/api-docs/commerce/notification/overview.html#create-filter\" target=\"_blank\">Creating a subscription filter for a topic</a> for additional information.<br><br><span class=\"tablenote\"><b>Note:</b> Only one filter can be in <strong>ENABLED</strong> (which means active) status on a subscription at a time. If an <strong>ENABLED</strong> filter is overwritten by a new call to <strong>CREATE</strong> a filter for the subscription, it stays in <strong>ENABLED</strong> status until the new <strong>PENDING</strong> filter becomes the <strong>ENABLED</strong> filter, and the existing filter then becomes <strong>DISABLED</strong>.</span>
+This method allows applications to create a filter for a subscription. Filters allow applications to only be sent notifications that match a provided criteria. Notifications that do not match this criteria will not be sent to the destination.<br><br>The <strong>filterSchema</strong> value must be a valid <a href=\"https://json-schema.org \" target=\"_blank\">JSON Schema Core document</a> (version 2020-12 or later). The <strong>filterSchema</strong> provided must describe the subscription's notification payload such that it supplies valid criteria to filter the subscription's notifications. The user does not need to provide <code>$schema</code> and <code>$id</code> definitions.<br><br>When a filter is first created, it is not immediately active on the subscription. If the request has a valid JSON body, the successful call returns the HTTP status code <b>201&nbsp;Created</b>. Newly created filters are in <code>PENDING</code> status until they are reviewed. If a filter is valid, it will move from <code>PENDING</code> status to <code>ENABLED</code> status. You can find the status of a filter using the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptionfilter\">getSubscriptionFilter</a> method.<br><br><span class=\"tablenote\"><b>Note:</b> Only one filter can be in <code>ENABLED</code> (which means active) status on a subscription at a time. If an <code>ENABLED</code> filter is overwritten by a new call to <code>CREATE</code> a filter for the subscription, it stays in <strong>ENABLED</strong> status until the new <strong>PENDING</strong> filter becomes the <code>ENABLED</code> filter, and the existing filter then becomes <code>DISABLED</code>.</span>
 
 ### Example
 
@@ -112,12 +110,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription for which a filter will be created.
 $create_subscription_filter_request = new \eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest(); // \eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest | The create subscription filter request.
 
 try {
-    $result = $apiInstance->createSubscriptionFilter($content_type, $subscription_id, $create_subscription_filter_request);
+    $result = $apiInstance->createSubscriptionFilter($subscription_id, $create_subscription_filter_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscriptionFilter: ', $e->getMessage(), PHP_EOL;
@@ -128,7 +125,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **subscription_id** | **string**| The unique identifier of the subscription for which a filter will be created. | |
 | **create_subscription_filter_request** | [**\eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest**](../Model/CreateSubscriptionFilterRequest.md)| The create subscription filter request. | [optional] |
 
@@ -152,7 +148,7 @@ try {
 ## `deleteSubscription()`
 
 ```php
-deleteSubscription($subscription_id)
+deleteSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
@@ -179,10 +175,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to delete. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to delete. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $apiInstance->deleteSubscription($subscription_id);
+    $result = $apiInstance->deleteSubscription($subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -192,11 +189,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| The unique identifier of the subscription to delete. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of the subscription to delete. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -205,7 +202,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -214,12 +211,12 @@ void (empty response body)
 ## `deleteSubscriptionFilter()`
 
 ```php
-deleteSubscriptionFilter($filter_id, $subscription_id)
+deleteSubscriptionFilter($filter_id, $subscription_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method allows applications to disable the active filter on a subscription, so that a new subscription filter may be added.<br><br><span class=\"tablenote\"><b>Note:</b> Subscription filters in <strong>PENDING</strong> status can not be disabled. However, a new filter can be created instead with the <strong>createSubscriptionFilter</strong> method and this new filter will override the <strong>PENDING</strong> filter.</span>
+This method allows applications to disable the active filter on a subscription, so that a new subscription filter may be added.<br><br><span class=\"tablenote\"><b>Note:</b> Subscription filters in <code>PENDING</code> status can not be disabled. However, a new filter can be created instead with the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-createsubscriptionfilter\">createSubscriptionFilter</a>  method and this new filter will override the <code>PENDING</code> filter.</span>
 
 ### Example
 
@@ -241,11 +238,12 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$filter_id = 'filter_id_example'; // string | The unique identifier of the subscription filter to delete.  Filter ID values, if configured for a subscription, will be shown in the <b>subscriptions.filterId</b> field in <b>getSubscription</b> and <b>getSubscription</b> responses. The filter ID value is also returned in the Location response header when a filter is created with <b>createSubscriptionFilter</b>.
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription associated with the filter to delete. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$filter_id = 'filter_id_example'; // string | The unique identifier of the subscription filter to delete.  Filter ID values, if configured for a subscription, will be shown in the <b>subscriptions.filterId</b> field in <b>getSubscription</b> and <b>getSubscription</b> responses. The filter ID value is also returned in the Location response header when a filter is created with <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-createsubscriptionfilter\">createSubscriptionFilter</a>.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription associated with the filter to delete. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $apiInstance->deleteSubscriptionFilter($filter_id, $subscription_id);
+    $result = $apiInstance->deleteSubscriptionFilter($filter_id, $subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->deleteSubscriptionFilter: ', $e->getMessage(), PHP_EOL;
 }
@@ -255,12 +253,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **filter_id** | **string**| The unique identifier of the subscription filter to delete.  Filter ID values, if configured for a subscription, will be shown in the &lt;b&gt;subscriptions.filterId&lt;/b&gt; field in &lt;b&gt;getSubscription&lt;/b&gt; and &lt;b&gt;getSubscription&lt;/b&gt; responses. The filter ID value is also returned in the Location response header when a filter is created with &lt;b&gt;createSubscriptionFilter&lt;/b&gt;. | |
-| **subscription_id** | **string**| The unique identifier of the subscription associated with the filter to delete. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **filter_id** | **string**| The unique identifier of the subscription filter to delete.  Filter ID values, if configured for a subscription, will be shown in the &lt;b&gt;subscriptions.filterId&lt;/b&gt; field in &lt;b&gt;getSubscription&lt;/b&gt; and &lt;b&gt;getSubscription&lt;/b&gt; responses. The filter ID value is also returned in the Location response header when a filter is created with &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-createsubscriptionfilter\&quot;&gt;createSubscriptionFilter&lt;/a&gt;. | |
+| **subscription_id** | **string**| The unique identifier of the subscription associated with the filter to delete. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -269,7 +267,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -278,12 +276,12 @@ void (empty response body)
 ## `disableSubscription()`
 
 ```php
-disableSubscription($subscription_id)
+disableSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method disables a subscription, which prevents the subscription from providing notifications. To restart a subscription, call <strong>enableSubscription</strong>.
+This method disables a subscription, which prevents the subscription from providing notifications. To restart a subscription, call <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-enablesubscription\">enableSubscription</a>.
 
 ### Example
 
@@ -305,10 +303,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of an enabled subscription that will be disabled. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of an enabled subscription that will be disabled. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $apiInstance->disableSubscription($subscription_id);
+    $result = $apiInstance->disableSubscription($subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->disableSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -318,11 +317,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| The unique identifier of an enabled subscription that will be disabled. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of an enabled subscription that will be disabled. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -331,7 +330,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -340,12 +339,12 @@ void (empty response body)
 ## `enableSubscription()`
 
 ```php
-enableSubscription($subscription_id)
+enableSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method allows applications to enable a disabled subscription. To pause (or disable) an enabled subscription, call <strong>disableSubscription</strong>.
+This method allows applications to enable a disabled subscription. To pause (or disable) an enabled subscription, call <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-disablesubscription\">disableSubscription</a>.
 
 ### Example
 
@@ -367,10 +366,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of a disabled subscription that will be enabled. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of a disabled subscription that will be enabled. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $apiInstance->enableSubscription($subscription_id);
+    $result = $apiInstance->enableSubscription($subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->enableSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -380,11 +380,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| The unique identifier of a disabled subscription that will be enabled. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of a disabled subscription that will be enabled. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -393,7 +393,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -407,7 +407,7 @@ getSubscription($subscription_id): \eBay\Commerce\Notification\Model\Subscriptio
 
 
 
-This method allows applications to retrieve subscription details for the specified subscription.<br><br>Specify the subscription to retrieve using the <strong>subscription_id</strong>. Use the <strong>getSubscriptions</strong> method to browse all subscriptions if you do not know the <strong>subscription_id</strong>.<br><br>Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.
+This method allows applications to retrieve subscription details for the specified subscription.<br><br>Specify the subscription to retrieve using the <strong>subscription_id</strong>. Use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> method to browse all subscriptions if you do not know the <strong>subscription_id</strong>.<br><br>Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.
 
 ### Example
 
@@ -429,7 +429,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to retrieve. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to retrieve. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
     $result = $apiInstance->getSubscription($subscription_id);
@@ -443,7 +443,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| The unique identifier of the subscription to retrieve. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of the subscription to retrieve. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
@@ -493,7 +493,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     $config
 );
 $filter_id = 'filter_id_example'; // string | The unique identifier of the subscription filter.  Filter ID values, if configured for a subscription, will be shown in the <b>subscriptions.filterId</b> field in <b>getSubscription</b> and <b>getSubscription</b> responses. The filter ID value is also returned in the Location response header when a filter is created with <b>createSubscriptionFilter</b>.
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription associated with the filter. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription associated with the filter. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
     $result = $apiInstance->getSubscriptionFilter($filter_id, $subscription_id);
@@ -508,7 +508,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **filter_id** | **string**| The unique identifier of the subscription filter.  Filter ID values, if configured for a subscription, will be shown in the &lt;b&gt;subscriptions.filterId&lt;/b&gt; field in &lt;b&gt;getSubscription&lt;/b&gt; and &lt;b&gt;getSubscription&lt;/b&gt; responses. The filter ID value is also returned in the Location response header when a filter is created with &lt;b&gt;createSubscriptionFilter&lt;/b&gt;. | |
-| **subscription_id** | **string**| The unique identifier of the subscription associated with the filter. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of the subscription associated with the filter. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
@@ -595,12 +595,12 @@ try {
 ## `testSubscription()`
 
 ```php
-testSubscription($subscription_id)
+testSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method triggers a mocked test payload that includes a notification ID, publish date, and so on. Use this method to test your subscription end-to-end.<br><br>You can create the subscription in disabled mode, test it using this method, and when everything is ready, you can enable the subscription (see the <strong>enableSubscription</strong> method).<br><br><span class=\"tablenote\"><b>Note:</b> Use the <strong>notificationId</strong> to tell the difference between a test payload and a real payload.</span>
+This method triggers a mocked test payload that includes a notification ID, publish date, and so on. Use this method to test your subscription end-to-end.<br><br>You can create the subscription in disabled mode, test it using this method, and when everything is ready, you can enable the subscription (see the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-enablesubscription\">enableSubscription</a> method).<br><br><span class=\"tablenote\"><b>Note:</b> Use the <strong>notificationId</strong> to tell the difference between a test payload and a real payload.</span>
 
 ### Example
 
@@ -622,10 +622,11 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to test. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to test. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $apiInstance->testSubscription($subscription_id);
+    $result = $apiInstance->testSubscription($subscription_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->testSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -635,11 +636,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **subscription_id** | **string**| The unique identifier of the subscription to test. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier of the subscription to test. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -648,7 +649,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -657,12 +658,12 @@ void (empty response body)
 ## `updateSubscription()`
 
 ```php
-updateSubscription($content_type, $subscription_id, $update_subscription_request)
+updateSubscription($subscription_id, $update_subscription_request): \eBay\Commerce\Notification\Model\Error
 ```
 
 
 
-This method allows applications to update a subscription. Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.<br><br><span class=\"tablenote\"><b>Note:</b> This call returns an error if an application is not authorized to subscribe to a topic.</span><br><br>You can pause and restart a subscription. See the <b>disableSubscription</b> and <b>enableSubscription</b> methods.
+This method allows applications to update a subscription. Subscriptions allow applications to express interest in notifications and keep receiving the information relevant to their business.<br><br><span class=\"tablenote\"><b>Note:</b> This call returns an error if an application is not authorized to subscribe to a topic.</span><br><br>You can pause and restart a subscription. See the <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-disablesubscription\">disableSubscription</a> and <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-enablesubscription\">enableSubscription</a>methods.
 
 ### Example
 
@@ -684,12 +685,12 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
-$subscription_id = 'subscription_id_example'; // string | The unique identifier for the subscription to update. Use <b>getSubscriptions</b> to retrieve subscription IDs.
+$subscription_id = 'subscription_id_example'; // string | The unique identifier for the subscription to update. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 $update_subscription_request = new \eBay\Commerce\Notification\Model\UpdateSubscriptionRequest(); // \eBay\Commerce\Notification\Model\UpdateSubscriptionRequest | The create subscription request.
 
 try {
-    $apiInstance->updateSubscription($content_type, $subscription_id, $update_subscription_request);
+    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -699,13 +700,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
-| **subscription_id** | **string**| The unique identifier for the subscription to update. Use &lt;b&gt;getSubscriptions&lt;/b&gt; to retrieve subscription IDs. | |
+| **subscription_id** | **string**| The unique identifier for the subscription to update. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\&quot;&gt;getSubscriptions&lt;/a&gt; to retrieve subscription IDs. | |
 | **update_subscription_request** | [**\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest**](../Model/UpdateSubscriptionRequest.md)| The create subscription request. | [optional] |
 
 ### Return type
 
-void (empty response body)
+[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
 
 ### Authorization
 
@@ -714,7 +714,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

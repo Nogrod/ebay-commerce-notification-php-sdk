@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**category** | **string** | Identifies the type of erro. | [optional]
+**category** | **string** | Identifies the type of error. | [optional]
 **domain** | **string** | Name for the primary system where the error occurred. This is relevant for application errors. | [optional]
 **error_id** | **int** | A unique number to identify the error. | [optional]
 **input_ref_ids** | **string[]** | An array of request elements most closely associated to the error. | [optional]

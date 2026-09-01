@@ -16,7 +16,7 @@ getTopic($topic_id): \eBay\Commerce\Notification\Model\Topic
 
 
 
-This method allows applications to retrieve details for the specified topic. This information includes supported schema versions, formats, and other metadata for the topic.<br><br>Applications can subscribe to any of the topics for a supported schema version and format, limited by the authorization scopes required to subscribe to the topic.<br><br>A topic specifies the type of information to be received and the data types associated with an event. An event occurs in the eBay system, such as when a user requests deletion or revokes access for an application. An event is an instance of an event type (topic).<br><br>Specify the topic to retrieve using the <b>topic_id</b> URI parameter.<br><br><span class=\"tablenote\"><b>Note:</b> Use the <a href=\"/api-docs/commerce/notification/resources/topic/methods/getTopics\">getTopics</a> method to find a topic if you do not know the topic ID.</span>
+This method allows applications to retrieve details for the specified topic. This information includes supported schema versions, formats, and other metadata for the topic.<br><br>Applications can subscribe to any of the topics for a supported schema version and format, limited by the authorization scopes required to subscribe to the topic.<br><br>A topic specifies the type of information to be received and the data types associated with an event. An event occurs in the eBay system, such as when a user requests deletion or revokes access for an application. An event is an instance of an event type (topic).<br><br>Specify the topic to retrieve using the <b>topic_id</b> URI parameter.<br><br><span class=\"tablenote\"><b>Note:</b> Use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-topic-gettopics\">getTopics</a> method to find a topic if you do not know the topic ID.</span>
 
 ### Example
 
@@ -38,7 +38,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\TopicApi(
     new GuzzleHttp\Client(),
     $config
 );
-$topic_id = 'topic_id_example'; // string | The unique identifier of the notification topic for which the details are retrieved. Use <b>getTopics</b> to retrieve the topic ID.
+$topic_id = 'topic_id_example'; // string | The unique identifier of the notification topic for which the details are retrieved. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-topic-gettopics\">getTopics</a> to retrieve the topic ID.
 
 try {
     $result = $apiInstance->getTopic($topic_id);
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **topic_id** | **string**| The unique identifier of the notification topic for which the details are retrieved. Use &lt;b&gt;getTopics&lt;/b&gt; to retrieve the topic ID. | |
+| **topic_id** | **string**| The unique identifier of the notification topic for which the details are retrieved. Use &lt;a href&#x3D;\&quot;/develop/api/sell/notification_api#sell-notification_api-topic-gettopics\&quot;&gt;getTopics&lt;/a&gt; to retrieve the topic ID. | |
 
 ### Return type
 
