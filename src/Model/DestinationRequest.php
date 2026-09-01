@@ -62,7 +62,7 @@ class DestinationRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     protected static array $openAPITypes = [
         'delivery_config' => '\eBay\Commerce\Notification\Model\DeliveryConfig',
         'name' => 'string',
-        'status' => '\eBay\Commerce\Notification\Model\DestinationStatusEnum'
+        'status' => 'string'
     ];
 
     /**
@@ -342,9 +342,9 @@ class DestinationRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Gets status
      *
-     * @return \eBay\Commerce\Notification\Model\DestinationStatusEnum
+     * @return string
      */
-    public function getStatus(): \eBay\Commerce\Notification\Model\DestinationStatusEnum
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
@@ -352,11 +352,11 @@ class DestinationRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets status
      *
-     * @param \eBay\Commerce\Notification\Model\DestinationStatusEnum $status This field sets the status for the destination endpoint as <code>ENABLED</code> or <code>DISABLED</code>.<br><br><span class=\"tablenote\"><b>Note:</b> The <b>MARKED_DOWN</b> value is set by eBay systems and cannot be used in a create or update call by applications.</span>
+     * @param string $status This field sets the status for the destination endpoint as <code>ENABLED</code> or <code>DISABLED</code>.<br><br><span class=\"tablenote\"><b>Note:</b> The <b>MARKED_DOWN</b> value is set by eBay systems and cannot be used in a create or update call by applications.</span>
      *
      * @return $this
      */
-    public function setStatus(\eBay\Commerce\Notification\Model\DestinationStatusEnum $status): static
+    public function setStatus(string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

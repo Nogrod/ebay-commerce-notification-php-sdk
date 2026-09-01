@@ -63,7 +63,7 @@ class SubscriptionFilter implements ModelInterface, ArrayAccess, JsonSerializabl
         'creation_date' => 'string',
         'filter_id' => 'string',
         'filter_schema' => 'array<string,object>',
-        'filter_status' => '\eBay\Commerce\Notification\Model\SubscriptionFilterStatus',
+        'filter_status' => 'string',
         'subscription_id' => 'string'
     ];
 
@@ -377,9 +377,9 @@ class SubscriptionFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Gets filter_status
      *
-     * @return \eBay\Commerce\Notification\Model\SubscriptionFilterStatus|null
+     * @return string|null
      */
-    public function getFilterStatus(): ?\eBay\Commerce\Notification\Model\SubscriptionFilterStatus
+    public function getFilterStatus(): ?string
     {
         return $this->container['filter_status'];
     }
@@ -387,11 +387,11 @@ class SubscriptionFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets filter_status
      *
-     * @param \eBay\Commerce\Notification\Model\SubscriptionFilterStatus|null $filter_status The status of this subscription filter.
+     * @param string|null $filter_status The status of this subscription filter.
      *
      * @return $this
      */
-    public function setFilterStatus(?\eBay\Commerce\Notification\Model\SubscriptionFilterStatus $filter_status): static
+    public function setFilterStatus(?string $filter_status): static
     {
         if (is_null($filter_status)) {
             throw new InvalidArgumentException('non-nullable filter_status cannot be null');

@@ -64,7 +64,7 @@ class Subscription implements ModelInterface, ArrayAccess, JsonSerializable
         'destination_id' => 'string',
         'filter_id' => 'string',
         'payload' => '\eBay\Commerce\Notification\Model\SubscriptionPayloadDetail',
-        'status' => '\eBay\Commerce\Notification\Model\SubscriptionStatusEnum',
+        'status' => 'string',
         'subscription_id' => 'string',
         'topic_id' => 'string'
     ];
@@ -418,9 +418,9 @@ class Subscription implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets status
      *
-     * @return \eBay\Commerce\Notification\Model\SubscriptionStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Commerce\Notification\Model\SubscriptionStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -428,11 +428,11 @@ class Subscription implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets status
      *
-     * @param \eBay\Commerce\Notification\Model\SubscriptionStatusEnum|null $status The status of this subscription.
+     * @param string|null $status The status of this subscription.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Commerce\Notification\Model\SubscriptionStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

@@ -62,7 +62,7 @@ class UpdateSubscriptionRequest implements ModelInterface, ArrayAccess, JsonSeri
     protected static array $openAPITypes = [
         'destination_id' => 'string',
         'payload' => '\eBay\Commerce\Notification\Model\SubscriptionPayloadDetail',
-        'status' => '\eBay\Commerce\Notification\Model\SubscriptionStatusEnum'
+        'status' => 'string'
     ];
 
     /**
@@ -336,9 +336,9 @@ class UpdateSubscriptionRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Gets status
      *
-     * @return \eBay\Commerce\Notification\Model\SubscriptionStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Commerce\Notification\Model\SubscriptionStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -346,11 +346,11 @@ class UpdateSubscriptionRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets status
      *
-     * @param \eBay\Commerce\Notification\Model\SubscriptionStatusEnum|null $status Set the status of the subscription being updated to <code>ENABLED</code> or <code>DISABLED</code>.
+     * @param string|null $status Set the status of the subscription being updated to <code>ENABLED</code> or <code>DISABLED</code>.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Commerce\Notification\Model\SubscriptionStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

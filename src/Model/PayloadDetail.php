@@ -60,9 +60,9 @@ class PayloadDetail implements ModelInterface, ArrayAccess, JsonSerializable
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'delivery_protocol' => '\eBay\Commerce\Notification\Model\ProtocolEnum',
+        'delivery_protocol' => 'string',
         'deprecated' => 'bool',
-        'format' => '\eBay\Commerce\Notification\Model\FormatTypeEnum[]',
+        'format' => 'string[]',
         'schema_version' => 'string'
     ];
 
@@ -289,9 +289,9 @@ class PayloadDetail implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets delivery_protocol
      *
-     * @return \eBay\Commerce\Notification\Model\ProtocolEnum|null
+     * @return string|null
      */
-    public function getDeliveryProtocol(): ?\eBay\Commerce\Notification\Model\ProtocolEnum
+    public function getDeliveryProtocol(): ?string
     {
         return $this->container['delivery_protocol'];
     }
@@ -299,11 +299,11 @@ class PayloadDetail implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets delivery_protocol
      *
-     * @param \eBay\Commerce\Notification\Model\ProtocolEnum|null $delivery_protocol The supported delivery protocols.
+     * @param string|null $delivery_protocol The supported delivery protocols.
      *
      * @return $this
      */
-    public function setDeliveryProtocol(?\eBay\Commerce\Notification\Model\ProtocolEnum $delivery_protocol): static
+    public function setDeliveryProtocol(?string $delivery_protocol): static
     {
         if (is_null($delivery_protocol)) {
             throw new InvalidArgumentException('non-nullable delivery_protocol cannot be null');
@@ -343,7 +343,7 @@ class PayloadDetail implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets format
      *
-     * @return \eBay\Commerce\Notification\Model\FormatTypeEnum[]|null
+     * @return string[]|null
      */
     public function getFormat(): ?array
     {
@@ -353,7 +353,7 @@ class PayloadDetail implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets format
      *
-     * @param \eBay\Commerce\Notification\Model\FormatTypeEnum[]|null $format The supported format. Presently, <code>JSON</code> is the only supported format.
+     * @param string[]|null $format The supported format. Presently, <code>JSON</code> is the only supported format.
      *
      * @return $this
      */

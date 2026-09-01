@@ -63,7 +63,7 @@ class Destination implements ModelInterface, ArrayAccess, JsonSerializable
         'delivery_config' => '\eBay\Commerce\Notification\Model\DeliveryConfig',
         'destination_id' => 'string',
         'name' => 'string',
-        'status' => '\eBay\Commerce\Notification\Model\DestinationStatusEnum'
+        'status' => 'string'
     ];
 
     /**
@@ -370,9 +370,9 @@ class Destination implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets status
      *
-     * @return \eBay\Commerce\Notification\Model\DestinationStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Commerce\Notification\Model\DestinationStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -380,11 +380,11 @@ class Destination implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets status
      *
-     * @param \eBay\Commerce\Notification\Model\DestinationStatusEnum|null $status The status for this destination.<br><br><span class=\"tablenote\"><b>Note:</b> The <code>MARKED_DOWN</code> value is set by eBay systems and cannot be used in a create or update call by applications.</span><br><br><b>Valid values:</b><ul><li><code>ENABLED</code></li><li><code>DISABLED</code></li><li><code>MARKED_DOWN</code></li></ul>
+     * @param string|null $status The status for this destination.<br><br><span class=\"tablenote\"><b>Note:</b> The <code>MARKED_DOWN</code> value is set by eBay systems and cannot be used in a create or update call by applications.</span><br><br><b>Valid values:</b><ul><li><code>ENABLED</code></li><li><code>DISABLED</code></li><li><code>MARKED_DOWN</code></li></ul>
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Commerce\Notification\Model\DestinationStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

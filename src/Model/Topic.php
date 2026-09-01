@@ -61,11 +61,11 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $openAPITypes = [
         'authorization_scopes' => 'string[]',
-        'context' => '\eBay\Commerce\Notification\Model\ContextEnum',
+        'context' => 'string',
         'description' => 'string',
         'filterable' => 'bool',
-        'scope' => '\eBay\Commerce\Notification\Model\ScopeEnum',
-        'status' => '\eBay\Commerce\Notification\Model\StatusEnum',
+        'scope' => 'string',
+        'status' => 'string',
         'supported_payloads' => '\eBay\Commerce\Notification\Model\PayloadDetail[]',
         'topic_id' => 'string'
     ];
@@ -344,9 +344,9 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets context
      *
-     * @return \eBay\Commerce\Notification\Model\ContextEnum|null
+     * @return string|null
      */
-    public function getContext(): ?\eBay\Commerce\Notification\Model\ContextEnum
+    public function getContext(): ?string
     {
         return $this->container['context'];
     }
@@ -354,11 +354,11 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets context
      *
-     * @param \eBay\Commerce\Notification\Model\ContextEnum|null $context The business context associated with this topic.
+     * @param string|null $context The business context associated with this topic.
      *
      * @return $this
      */
-    public function setContext(?\eBay\Commerce\Notification\Model\ContextEnum $context): static
+    public function setContext(?string $context): static
     {
         if (is_null($context)) {
             throw new InvalidArgumentException('non-nullable context cannot be null');
@@ -425,9 +425,9 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets scope
      *
-     * @return \eBay\Commerce\Notification\Model\ScopeEnum|null
+     * @return string|null
      */
-    public function getScope(): ?\eBay\Commerce\Notification\Model\ScopeEnum
+    public function getScope(): ?string
     {
         return $this->container['scope'];
     }
@@ -435,11 +435,11 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets scope
      *
-     * @param \eBay\Commerce\Notification\Model\ScopeEnum|null $scope The scope of this topic.
+     * @param string|null $scope The scope of this topic.
      *
      * @return $this
      */
-    public function setScope(?\eBay\Commerce\Notification\Model\ScopeEnum $scope): static
+    public function setScope(?string $scope): static
     {
         if (is_null($scope)) {
             throw new InvalidArgumentException('non-nullable scope cannot be null');
@@ -452,9 +452,9 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets status
      *
-     * @return \eBay\Commerce\Notification\Model\StatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Commerce\Notification\Model\StatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -462,11 +462,11 @@ class Topic implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets status
      *
-     * @param \eBay\Commerce\Notification\Model\StatusEnum|null $status The status of this topic.
+     * @param string|null $status The status of this topic.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Commerce\Notification\Model\StatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

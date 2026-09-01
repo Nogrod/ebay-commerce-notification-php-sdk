@@ -2310,8 +2310,8 @@
             "$ref": "#/components/schemas/SubscriptionPayloadDetail"
           },
           "status": {
-            "description": "Set the status of the subscription to <code>ENABLED</code> or <code>DISABLED</code>.",
-            "$ref": "#/components/schemas/SubscriptionStatusEnum"
+            "type": "string",
+            "description": "Set the status of the subscription to <code>ENABLED</code> or <code>DISABLED</code>."
           },
           "topicId": {
             "type": "string",
@@ -2350,8 +2350,8 @@
             "description": "The name associated with this destination."
           },
           "status": {
-            "description": "The status for this destination.<br><br><span class=\"tablenote\"><b>Note:</b> The <code>MARKED_DOWN</code> value is set by eBay systems and cannot be used in a create or update call by applications.</span><br><br><b>Valid values:</b><ul><li><code>ENABLED</code></li><li><code>DISABLED</code></li><li><code>MARKED_DOWN</code></li></ul>",
-            "$ref": "#/components/schemas/DestinationStatusEnum"
+            "type": "string",
+            "description": "The status for this destination.<br><br><span class=\"tablenote\"><b>Note:</b> The <code>MARKED_DOWN</code> value is set by eBay systems and cannot be used in a create or update call by applications.</span><br><br><b>Valid values:</b><ul><li><code>ENABLED</code></li><li><code>DISABLED</code></li><li><code>MARKED_DOWN</code></li></ul>"
           }
         },
         "description": "A type that contains information about the destination."
@@ -2372,8 +2372,8 @@
             "description": "The seller-specified name for the destination endpoint."
           },
           "status": {
-            "description": "This field sets the status for the destination endpoint as <code>ENABLED</code> or <code>DISABLED</code>.<br><br><span class=\"tablenote\"><b>Note:</b> The <b>MARKED_DOWN</b> value is set by eBay systems and cannot be used in a create or update call by applications.</span>",
-            "$ref": "#/components/schemas/DestinationStatusEnum"
+            "type": "string",
+            "description": "This field sets the status for the destination endpoint as <code>ENABLED</code> or <code>DISABLED</code>.<br><br><span class=\"tablenote\"><b>Note:</b> The <b>MARKED_DOWN</b> value is set by eBay systems and cannot be used in a create or update call by applications.</span>"
           }
         },
         "description": "A type that contains information about the destination request."
@@ -2495,8 +2495,8 @@
         "type": "object",
         "properties": {
           "deliveryProtocol": {
-            "description": "The supported delivery protocols.",
-            "$ref": "#/components/schemas/ProtocolEnum"
+            "type": "string",
+            "description": "The supported delivery protocols."
           },
           "deprecated": {
             "type": "boolean",
@@ -2506,7 +2506,7 @@
             "type": "array",
             "description": "The supported format. Presently, <code>JSON</code> is the only supported format.",
             "items": {
-              "$ref": "#/components/schemas/FormatTypeEnum"
+              "type": "string"
             }
           },
           "schemaVersion": {
@@ -2578,8 +2578,8 @@
             "$ref": "#/components/schemas/SubscriptionPayloadDetail"
           },
           "status": {
-            "description": "The status of this subscription.",
-            "$ref": "#/components/schemas/SubscriptionStatusEnum"
+            "type": "string",
+            "description": "The status of this subscription."
           },
           "subscriptionId": {
             "type": "string",
@@ -2612,8 +2612,8 @@
             "description": "The content of this subscription filter as a valid <a href=\"https://json-schema.org \" target=\"_blank\">JSON Schema Core document</a> (version 2020-12 or later). The <strong>filterSchema</strong> provided must describe the subscription's notification payload such that it supplies valid criteria to filter the subscription's notifications."
           },
           "filterStatus": {
-            "description": "The status of this subscription filter.",
-            "$ref": "#/components/schemas/SubscriptionFilterStatus"
+            "type": "string",
+            "description": "The status of this subscription filter."
           },
           "subscriptionId": {
             "type": "string",
@@ -2634,12 +2634,12 @@
         "type": "object",
         "properties": {
           "deliveryProtocol": {
-            "description": "The supported delivery protocol of the notification topic.<br><br><span class=\"tablenote\"><b>Note:</b> <code>HTTPS</code> is currently the only supported delivery protocol of all notification topics. </span>",
-            "$ref": "#/components/schemas/ProtocolEnum"
+            "type": "string",
+            "description": "The supported delivery protocol of the notification topic.<br><br><span class=\"tablenote\"><b>Note:</b> <code>HTTPS</code> is currently the only supported delivery protocol of all notification topics. </span>"
           },
           "format": {
-            "description": "The supported data format of the payload.<br><br><span class=\"tablenote\"><b>Note:</b> JSON is currently the only supported format for all notification topics.</span>",
-            "$ref": "#/components/schemas/FormatTypeEnum"
+            "type": "string",
+            "description": "The supported data format of the payload.<br><br><span class=\"tablenote\"><b>Note:</b> JSON is currently the only supported format for all notification topics.</span>"
           },
           "schemaVersion": {
             "type": "string",
@@ -2708,8 +2708,8 @@
             }
           },
           "context": {
-            "description": "The business context associated with this topic.",
-            "$ref": "#/components/schemas/ContextEnum"
+            "type": "string",
+            "description": "The business context associated with this topic."
           },
           "description": {
             "type": "string",
@@ -2720,12 +2720,12 @@
             "description": "The indicator of whether this topic is filterable or not."
           },
           "scope": {
-            "description": "The scope of this topic.",
-            "$ref": "#/components/schemas/ScopeEnum"
+            "type": "string",
+            "description": "The scope of this topic."
           },
           "status": {
-            "description": "The status of this topic.",
-            "$ref": "#/components/schemas/StatusEnum"
+            "type": "string",
+            "description": "The status of this topic."
           },
           "supportedPayloads": {
             "type": "array",
@@ -2784,8 +2784,8 @@
             "$ref": "#/components/schemas/SubscriptionPayloadDetail"
           },
           "status": {
-            "description": "Set the status of the subscription being updated to <code>ENABLED</code> or <code>DISABLED</code>.",
-            "$ref": "#/components/schemas/SubscriptionStatusEnum"
+            "type": "string",
+            "description": "Set the status of the subscription being updated to <code>ENABLED</code> or <code>DISABLED</code>."
           }
         },
         "description": "A type that describes the details of the update subscription request."

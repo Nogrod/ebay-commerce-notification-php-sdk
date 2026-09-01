@@ -60,8 +60,8 @@ class SubscriptionPayloadDetail implements ModelInterface, ArrayAccess, JsonSeri
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'delivery_protocol' => '\eBay\Commerce\Notification\Model\ProtocolEnum',
-        'format' => '\eBay\Commerce\Notification\Model\FormatTypeEnum',
+        'delivery_protocol' => 'string',
+        'format' => 'string',
         'schema_version' => 'string'
     ];
 
@@ -282,9 +282,9 @@ class SubscriptionPayloadDetail implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Gets delivery_protocol
      *
-     * @return \eBay\Commerce\Notification\Model\ProtocolEnum|null
+     * @return string|null
      */
-    public function getDeliveryProtocol(): ?\eBay\Commerce\Notification\Model\ProtocolEnum
+    public function getDeliveryProtocol(): ?string
     {
         return $this->container['delivery_protocol'];
     }
@@ -292,11 +292,11 @@ class SubscriptionPayloadDetail implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets delivery_protocol
      *
-     * @param \eBay\Commerce\Notification\Model\ProtocolEnum|null $delivery_protocol The supported delivery protocol of the notification topic.<br><br><span class=\"tablenote\"><b>Note:</b> <code>HTTPS</code> is currently the only supported delivery protocol of all notification topics. </span>
+     * @param string|null $delivery_protocol The supported delivery protocol of the notification topic.<br><br><span class=\"tablenote\"><b>Note:</b> <code>HTTPS</code> is currently the only supported delivery protocol of all notification topics. </span>
      *
      * @return $this
      */
-    public function setDeliveryProtocol(?\eBay\Commerce\Notification\Model\ProtocolEnum $delivery_protocol): static
+    public function setDeliveryProtocol(?string $delivery_protocol): static
     {
         if (is_null($delivery_protocol)) {
             throw new InvalidArgumentException('non-nullable delivery_protocol cannot be null');
@@ -309,9 +309,9 @@ class SubscriptionPayloadDetail implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Gets format
      *
-     * @return \eBay\Commerce\Notification\Model\FormatTypeEnum|null
+     * @return string|null
      */
-    public function getFormat(): ?\eBay\Commerce\Notification\Model\FormatTypeEnum
+    public function getFormat(): ?string
     {
         return $this->container['format'];
     }
@@ -319,11 +319,11 @@ class SubscriptionPayloadDetail implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets format
      *
-     * @param \eBay\Commerce\Notification\Model\FormatTypeEnum|null $format The supported data format of the payload.<br><br><span class=\"tablenote\"><b>Note:</b> JSON is currently the only supported format for all notification topics.</span>
+     * @param string|null $format The supported data format of the payload.<br><br><span class=\"tablenote\"><b>Note:</b> JSON is currently the only supported format for all notification topics.</span>
      *
      * @return $this
      */
-    public function setFormat(?\eBay\Commerce\Notification\Model\FormatTypeEnum $format): static
+    public function setFormat(?string $format): static
     {
         if (is_null($format)) {
             throw new InvalidArgumentException('non-nullable format cannot be null');
