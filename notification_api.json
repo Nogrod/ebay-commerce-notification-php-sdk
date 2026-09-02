@@ -289,13 +289,6 @@
                   "description": "The  destination resource created."
                 }
               }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
             }
           },
           "400": {
@@ -934,13 +927,6 @@
                   "description": "The  subscription resource created."
                 }
               }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
             }
           },
           "400": {
@@ -1103,13 +1089,6 @@
                 "schema": {
                   "type": "string",
                   "description": "The location where the subscription filter resource was created."
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
                 }
               }
             }

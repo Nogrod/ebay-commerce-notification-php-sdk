@@ -20,7 +20,7 @@ All URIs are relative to https://api.ebay.com/commerce/notification/v1, except i
 ## `createSubscription()`
 
 ```php
-createSubscription($create_subscription_request): object
+createSubscription($create_subscription_request)
 ```
 
 
@@ -50,8 +50,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
 $create_subscription_request = new \eBay\Commerce\Notification\Model\CreateSubscriptionRequest(); // \eBay\Commerce\Notification\Model\CreateSubscriptionRequest | The create subscription request.
 
 try {
-    $result = $apiInstance->createSubscription($create_subscription_request);
-    print_r($result);
+    $apiInstance->createSubscription($create_subscription_request);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -65,7 +64,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -83,7 +82,7 @@ try {
 ## `createSubscriptionFilter()`
 
 ```php
-createSubscriptionFilter($subscription_id, $create_subscription_filter_request): object
+createSubscriptionFilter($subscription_id, $create_subscription_filter_request)
 ```
 
 
@@ -114,8 +113,7 @@ $subscription_id = 'subscription_id_example'; // string | The unique identifier 
 $create_subscription_filter_request = new \eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest(); // \eBay\Commerce\Notification\Model\CreateSubscriptionFilterRequest | The create subscription filter request.
 
 try {
-    $result = $apiInstance->createSubscriptionFilter($subscription_id, $create_subscription_filter_request);
-    print_r($result);
+    $apiInstance->createSubscriptionFilter($subscription_id, $create_subscription_filter_request);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscriptionFilter: ', $e->getMessage(), PHP_EOL;
 }
@@ -130,7 +128,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 

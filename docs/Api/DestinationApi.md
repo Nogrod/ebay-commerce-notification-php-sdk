@@ -14,7 +14,7 @@ All URIs are relative to https://api.ebay.com/commerce/notification/v1, except i
 ## `createDestination()`
 
 ```php
-createDestination($destination_request): object
+createDestination($destination_request)
 ```
 
 
@@ -44,8 +44,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
 $destination_request = new \eBay\Commerce\Notification\Model\DestinationRequest(); // \eBay\Commerce\Notification\Model\DestinationRequest | The create destination request.
 
 try {
-    $result = $apiInstance->createDestination($destination_request);
-    print_r($result);
+    $apiInstance->createDestination($destination_request);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->createDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,7 +58,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
