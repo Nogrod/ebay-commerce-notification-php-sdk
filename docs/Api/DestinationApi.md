@@ -19,7 +19,7 @@ createDestination($destination_request)
 
 
 
-This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-updatedestination\">updateDestination</a> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully.
+This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-updatedestination\">updateDestination</a> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully. See the <a href=\"/develop/guides/sell/sell-communications-guide#retrievingeBaynotifications\">Communications Guide</a> for more information.
 
 ### Example
 

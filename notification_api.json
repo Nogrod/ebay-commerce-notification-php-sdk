@@ -45,25 +45,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -79,6 +60,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "APPLICATION",
                   "description": "Configuration Not Found."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -112,6 +112,16 @@
           "required": false
         },
         "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -146,16 +156,6 @@
                   "domain": "API_NOTIFICATION",
                   "category": "APPLICATION",
                   "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -264,7 +264,7 @@
         "tags": [
           "destination"
         ],
-        "description": "This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-updatedestination\">updateDestination</a> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully.",
+        "description": "This method allows applications to create a destination. A destination is an endpoint that receives HTTP push notifications.<br><br>A single destination for all topics is valid, as is individual destinations for each topic.<br><br>To update a destination, use the <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-updatedestination\">updateDestination</a> call.<br><br>The destination created will need to be referenced while creating or updating a subscription to a topic.<br><br><span class=\"tablenote\"><b>Note:</b> The destination should be created and ready to respond with the expected <b>challengeResponse</b> for the endpoint to be registered successfully. See the <a href=\"/develop/guides/sell/sell-communications-guide#retrievingeBaynotifications\">Communications Guide</a> for more information.",
         "operationId": "createDestination",
         "parameters": [],
         "requestBody": {
@@ -302,16 +302,6 @@
             },
             "x-response-codes": {
               "errors": {
-                "195018": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Invalid or missing destination status. Supported values:[ENABLED,DISABLED]"
-                },
-                "195019": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Invalid or missing verification token for this endpoint."
-                },
                 "195016": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
@@ -321,25 +311,16 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Invalid or missing endpoint."
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
+                },
+                "195018": {
                   "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
+                  "category": "REQUEST",
+                  "description": "Invalid or missing destination status. Supported values:[ENABLED,DISABLED]"
+                },
+                "195019": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "REQUEST",
+                  "description": "Invalid or missing verification token for this endpoint."
                 }
               }
             }
@@ -369,6 +350,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Destination exists for this endpoint"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -422,25 +422,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -456,6 +437,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Invalid or missing destination id."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -499,6 +499,16 @@
           "required": false
         },
         "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -510,16 +520,6 @@
             },
             "x-response-codes": {
               "errors": {
-                "195018": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Invalid or missing destination status. Supported values:[ENABLED,DISABLED]"
-                },
-                "195019": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Invalid or missing verification token for this endpoint."
-                },
                 "195016": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
@@ -529,35 +529,16 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Invalid or missing endpoint."
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
+                },
+                "195018": {
                   "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "category": "REQUEST",
+                  "description": "Invalid or missing destination status. Supported values:[ENABLED,DISABLED]"
+                },
+                "195019": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "REQUEST",
+                  "description": "Invalid or missing verification token for this endpoint."
                 }
               }
             }
@@ -604,6 +585,25 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
+                }
+              }
+            }
           }
         },
         "security": [
@@ -632,37 +632,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "204": {
             "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -705,6 +686,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Destination is in use and cannot be deleted."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -758,25 +758,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -792,6 +773,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The specified key id is invalid."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -940,15 +940,15 @@
             },
             "x-response-codes": {
               "errors": {
-                "195010": {
+                "195006": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing protocol"
+                  "description": "Invalid or missing subscription status."
                 },
-                "195027": {
+                "195007": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing topic id."
+                  "description": "Invalid or missing destination id."
                 },
                 "195008": {
                   "domain": "API_NOTIFICATION",
@@ -960,34 +960,15 @@
                   "category": "REQUEST",
                   "description": "Specified format is not supported for the topic."
                 },
-                "195006": {
+                "195010": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing subscription status."
+                  "description": "Invalid or missing protocol"
                 },
-                "195007": {
+                "195027": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing destination id."
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
+                  "description": "Invalid or missing topic id."
                 }
               }
             }
@@ -1022,20 +1003,39 @@
             },
             "x-response-codes": {
               "errors": {
-                "195015": {
+                "195003": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "The subscription cannot be enabled since the destination is not enabled."
+                  "description": "Please provide configurations required for notifications. Refer to /config"
                 },
                 "195012": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Subscription already exists"
                 },
-                "195003": {
+                "195015": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Please provide configurations required for notifications. Refer to /config"
+                  "description": "The subscription cannot be enabled since the destination is not enabled."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1117,25 +1117,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -1170,6 +1151,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The subscription id does not exist."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1224,25 +1224,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -1258,6 +1239,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The subscription id does not exist."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1303,6 +1303,16 @@
           "required": false
         },
         "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -1314,10 +1324,15 @@
             },
             "x-response-codes": {
               "errors": {
-                "195010": {
+                "195006": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing protocol"
+                  "description": "Invalid or missing subscription status."
+                },
+                "195007": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "REQUEST",
+                  "description": "Invalid or missing destination id."
                 },
                 "195008": {
                   "domain": "API_NOTIFICATION",
@@ -1329,44 +1344,10 @@
                   "category": "REQUEST",
                   "description": "Specified format is not supported for the topic."
                 },
-                "195006": {
+                "195010": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
-                  "description": "Invalid or missing subscription status."
-                },
-                "195007": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Invalid or missing destination id."
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "description": "Invalid or missing protocol"
                 }
               }
             }
@@ -1401,6 +1382,11 @@
             },
             "x-response-codes": {
               "errors": {
+                "195012": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "REQUEST",
+                  "description": "Subscription already exists"
+                },
                 "195014": {
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
@@ -1410,11 +1396,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The subscription cannot be enabled since the destination is not enabled."
-                },
-                "195012": {
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
                   "domain": "API_NOTIFICATION",
-                  "category": "REQUEST",
-                  "description": "Subscription already exists"
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1447,37 +1447,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "204": {
             "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1501,6 +1482,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": " The subscription id does not exist."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1573,25 +1573,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -1631,6 +1612,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Invalid subscription filter id."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1673,6 +1673,16 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
           "400": {
             "description": "Bad Request",
             "content": {
@@ -1688,35 +1698,6 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The specified subscription id does not match the specified filter id."
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -1763,6 +1744,25 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1794,37 +1794,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "204": {
             "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1848,6 +1829,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The subscription id does not exist."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -1882,37 +1882,18 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "204": {
             "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "application/json": {
                 "schema": {
@@ -1960,6 +1941,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "The subscription cannot be enabled since the destination is not enabled."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -2014,25 +2014,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -2048,6 +2029,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": " The subscription id does not exist."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
@@ -2102,25 +2102,6 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            },
-            "x-response-codes": {
-              "errors": {
-                "195000": {
-                  "domain": "API_NOTIFICATION",
-                  "category": "APPLICATION",
-                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
-                }
-              }
-            }
-          },
           "404": {
             "description": "Not Found",
             "content": {
@@ -2136,6 +2117,25 @@
                   "domain": "API_NOTIFICATION",
                   "category": "REQUEST",
                   "description": "Invalid or missing topic id."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "x-response-codes": {
+              "errors": {
+                "195000": {
+                  "domain": "API_NOTIFICATION",
+                  "category": "APPLICATION",
+                  "description": "There was a problem with an eBay internal system or process. Contact eBay developer support for assistance."
                 }
               }
             }
