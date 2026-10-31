@@ -706,12 +706,12 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function deleteSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->deleteSubscriptionWithHttpInfo($subscription_id, $contentType);
         return $response;
     }
@@ -724,7 +724,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function deleteSubscriptionWithHttpInfo(
         string $subscription_id,
@@ -754,61 +754,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -873,27 +822,14 @@ class SubscriptionApi
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscription'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->deleteSubscriptionRequest($subscription_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -997,13 +933,13 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function deleteSubscriptionFilter(
         string $filter_id,
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->deleteSubscriptionFilterWithHttpInfo($filter_id, $subscription_id, $contentType);
         return $response;
     }
@@ -1017,7 +953,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function deleteSubscriptionFilterWithHttpInfo(
         string $filter_id,
@@ -1048,67 +984,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1185,27 +1064,14 @@ class SubscriptionApi
         string $subscription_id,
         string $contentType = self::contentTypes['deleteSubscriptionFilter'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->deleteSubscriptionFilterRequest($filter_id, $subscription_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1324,12 +1190,12 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function disableSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->disableSubscriptionWithHttpInfo($subscription_id, $contentType);
         return $response;
     }
@@ -1342,7 +1208,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function disableSubscriptionWithHttpInfo(
         string $subscription_id,
@@ -1372,61 +1238,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1491,27 +1306,14 @@ class SubscriptionApi
         string $subscription_id,
         string $contentType = self::contentTypes['disableSubscription'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->disableSubscriptionRequest($subscription_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1614,12 +1416,12 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function enableSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->enableSubscriptionWithHttpInfo($subscription_id, $contentType);
         return $response;
     }
@@ -1632,7 +1434,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function enableSubscriptionWithHttpInfo(
         string $subscription_id,
@@ -1662,67 +1464,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1795,27 +1540,14 @@ class SubscriptionApi
         string $subscription_id,
         string $contentType = self::contentTypes['enableSubscription'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->enableSubscriptionRequest($subscription_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2826,12 +2558,12 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function testSubscription(
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->testSubscriptionWithHttpInfo($subscription_id, $contentType);
         return $response;
     }
@@ -2844,7 +2576,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function testSubscriptionWithHttpInfo(
         string $subscription_id,
@@ -2874,61 +2606,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 202:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 202:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2993,27 +2674,14 @@ class SubscriptionApi
         string $subscription_id,
         string $contentType = self::contentTypes['testSubscription'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->testSubscriptionRequest($subscription_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3117,13 +2785,13 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function updateSubscription(
         string $subscription_id,
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->updateSubscriptionWithHttpInfo($subscription_id, $update_subscription_request, $contentType);
         return $response;
     }
@@ -3137,7 +2805,7 @@ class SubscriptionApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function updateSubscriptionWithHttpInfo(
         string $subscription_id,
@@ -3168,67 +2836,10 @@ class SubscriptionApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3305,27 +2916,14 @@ class SubscriptionApi
         ?\eBay\Commerce\Notification\Model\UpdateSubscriptionRequest $update_subscription_request = null,
         string $contentType = self::contentTypes['updateSubscription'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->updateSubscriptionRequest($subscription_id, $update_subscription_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

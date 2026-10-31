@@ -71,7 +71,7 @@ This endpoint does not need any parameter.
 ## `updateConfig()`
 
 ```php
-updateConfig($config): \eBay\Commerce\Notification\Model\Error
+updateConfig($config)
 ```
 
 
@@ -101,8 +101,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\ConfigApi(
 $config = new \eBay\Commerce\Notification\Model\Config(); // \eBay\Commerce\Notification\Model\Config | The configurations for this application.
 
 try {
-    $result = $apiInstance->updateConfig($config);
-    print_r($result);
+    $apiInstance->updateConfig($config);
 } catch (Exception $e) {
     echo 'Exception when calling ConfigApi->updateConfig: ', $e->getMessage(), PHP_EOL;
 }
@@ -116,7 +115,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 

@@ -76,7 +76,7 @@ void (empty response body)
 ## `deleteDestination()`
 
 ```php
-deleteDestination($destination_id): \eBay\Commerce\Notification\Model\Error
+deleteDestination($destination_id)
 ```
 
 
@@ -106,8 +106,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\DestinationApi(
 $destination_id = 'destination_id_example'; // string | The unique identifier of the destination to delete. Only disabled or marked down destinations can be deleted, and enabled destinations cannot be deleted. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-getdestination\">getDestination</a> or <a href=\"/develop/api/sell/notification_api#sell-notification_api-destination-getdestinations\">getDestinations</a> to see the current status of a destination.
 
 try {
-    $result = $apiInstance->deleteDestination($destination_id);
-    print_r($result);
+    $apiInstance->deleteDestination($destination_id);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->deleteDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -121,7 +120,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -267,7 +266,7 @@ try {
 ## `updateDestination()`
 
 ```php
-updateDestination($destination_id, $destination_request): \eBay\Commerce\Notification\Model\Error
+updateDestination($destination_id, $destination_request)
 ```
 
 
@@ -298,8 +297,7 @@ $destination_id = 'destination_id_example'; // string | The unique identifier fo
 $destination_request = new \eBay\Commerce\Notification\Model\DestinationRequest(); // \eBay\Commerce\Notification\Model\DestinationRequest | The create subscription request.
 
 try {
-    $result = $apiInstance->updateDestination($destination_id, $destination_request);
-    print_r($result);
+    $apiInstance->updateDestination($destination_id, $destination_request);
 } catch (Exception $e) {
     echo 'Exception when calling DestinationApi->updateDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -314,7 +312,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 

@@ -396,12 +396,12 @@ class DestinationApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function deleteDestination(
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->deleteDestinationWithHttpInfo($destination_id, $contentType);
         return $response;
     }
@@ -414,7 +414,7 @@ class DestinationApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function deleteDestinationWithHttpInfo(
         string $destination_id,
@@ -444,67 +444,10 @@ class DestinationApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -577,27 +520,14 @@ class DestinationApi
         string $destination_id,
         string $contentType = self::contentTypes['deleteDestination'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->deleteDestinationRequest($destination_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1281,13 +1211,13 @@ class DestinationApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \eBay\Commerce\Notification\Model\Error
+     * @return \eBay\Commerce\Notification\Model\Error|null
      */
     public function updateDestination(
         string $destination_id,
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
-    ): \eBay\Commerce\Notification\Model\Error {
+    ): ?\eBay\Commerce\Notification\Model\Error {
         list($response) = $this->updateDestinationWithHttpInfo($destination_id, $destination_request, $contentType);
         return $response;
     }
@@ -1301,7 +1231,7 @@ class DestinationApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: \eBay\Commerce\Notification\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: null, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function updateDestinationWithHttpInfo(
         string $destination_id,
@@ -1332,67 +1262,10 @@ class DestinationApi
 
             $statusCode = $response->getStatusCode();
 
-            switch ($statusCode) {
-                case 204:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 409:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
 
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\eBay\Commerce\Notification\Model\Error',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 204:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\eBay\Commerce\Notification\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1469,27 +1342,14 @@ class DestinationApi
         ?\eBay\Commerce\Notification\Model\DestinationRequest $destination_request = null,
         string $contentType = self::contentTypes['updateDestination'][0]
     ): PromiseInterface {
-        $returnType = '\eBay\Commerce\Notification\Model\Error';
+        $returnType = '';
         $request = $this->updateDestinationRequest($destination_id, $destination_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

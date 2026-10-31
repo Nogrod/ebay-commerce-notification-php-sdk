@@ -146,7 +146,7 @@ void (empty response body)
 ## `deleteSubscription()`
 
 ```php
-deleteSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
+deleteSubscription($subscription_id)
 ```
 
 
@@ -176,8 +176,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to delete. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $result = $apiInstance->deleteSubscription($subscription_id);
-    print_r($result);
+    $apiInstance->deleteSubscription($subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->deleteSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -191,7 +190,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -209,7 +208,7 @@ try {
 ## `deleteSubscriptionFilter()`
 
 ```php
-deleteSubscriptionFilter($filter_id, $subscription_id): \eBay\Commerce\Notification\Model\Error
+deleteSubscriptionFilter($filter_id, $subscription_id)
 ```
 
 
@@ -240,8 +239,7 @@ $filter_id = 'filter_id_example'; // string | The unique identifier of the subsc
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription associated with the filter to delete. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $result = $apiInstance->deleteSubscriptionFilter($filter_id, $subscription_id);
-    print_r($result);
+    $apiInstance->deleteSubscriptionFilter($filter_id, $subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->deleteSubscriptionFilter: ', $e->getMessage(), PHP_EOL;
 }
@@ -256,7 +254,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -274,7 +272,7 @@ try {
 ## `disableSubscription()`
 
 ```php
-disableSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
+disableSubscription($subscription_id)
 ```
 
 
@@ -304,8 +302,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of an enabled subscription that will be disabled. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $result = $apiInstance->disableSubscription($subscription_id);
-    print_r($result);
+    $apiInstance->disableSubscription($subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->disableSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -319,7 +316,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -337,7 +334,7 @@ try {
 ## `enableSubscription()`
 
 ```php
-enableSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
+enableSubscription($subscription_id)
 ```
 
 
@@ -367,8 +364,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of a disabled subscription that will be enabled. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $result = $apiInstance->enableSubscription($subscription_id);
-    print_r($result);
+    $apiInstance->enableSubscription($subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->enableSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -382,7 +378,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -593,7 +589,7 @@ try {
 ## `testSubscription()`
 
 ```php
-testSubscription($subscription_id): \eBay\Commerce\Notification\Model\Error
+testSubscription($subscription_id)
 ```
 
 
@@ -623,8 +619,7 @@ $apiInstance = new eBay\Commerce\Notification\Api\SubscriptionApi(
 $subscription_id = 'subscription_id_example'; // string | The unique identifier of the subscription to test. Use <a href=\"/develop/api/sell/notification_api#sell-notification_api-subscription-getsubscriptions\">getSubscriptions</a> to retrieve subscription IDs.
 
 try {
-    $result = $apiInstance->testSubscription($subscription_id);
-    print_r($result);
+    $apiInstance->testSubscription($subscription_id);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->testSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -638,7 +633,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
@@ -656,7 +651,7 @@ try {
 ## `updateSubscription()`
 
 ```php
-updateSubscription($subscription_id, $update_subscription_request): \eBay\Commerce\Notification\Model\Error
+updateSubscription($subscription_id, $update_subscription_request)
 ```
 
 
@@ -687,8 +682,7 @@ $subscription_id = 'subscription_id_example'; // string | The unique identifier 
 $update_subscription_request = new \eBay\Commerce\Notification\Model\UpdateSubscriptionRequest(); // \eBay\Commerce\Notification\Model\UpdateSubscriptionRequest | The create subscription request.
 
 try {
-    $result = $apiInstance->updateSubscription($subscription_id, $update_subscription_request);
-    print_r($result);
+    $apiInstance->updateSubscription($subscription_id, $update_subscription_request);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->updateSubscription: ', $e->getMessage(), PHP_EOL;
 }
@@ -703,7 +697,7 @@ try {
 
 ### Return type
 
-[**\eBay\Commerce\Notification\Model\Error**](../Model/Error.md)
+void (empty response body)
 
 ### Authorization
 
